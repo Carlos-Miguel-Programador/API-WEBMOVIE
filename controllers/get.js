@@ -65,6 +65,11 @@ router.get('/usuarios', async (req, res)=>{
             })
 
         })
+        .catch(()=>{
+            return res.status(404).json({
+                mensagem: "Ocorreu um erro!!!"
+            })
+        })
         
 
         
