@@ -1,6 +1,5 @@
 const db = require('../db/connection');
 const table = require('../db/table');
-const counter = require('../db/counter');
 const Express = require('express');
 
 const rounter = Express();
@@ -14,9 +13,13 @@ rounter.post('/usuarios', async (req, res)=>{
         const Users = table.findAll();
     
         Users
-        .then(d=>{        
-            let count = 0
-            counter.then(length=>{
+        .then(d=>{   
+            table.count()
+            .then(response=>{
+                return response;
+            }) 
+            .then(length=>{
+                let count = 0
                 for(count; count<length; count++)
                 {
                     if(recepted_data.Nome.toLowerCase() == d[count].dataValues.Nome.toLowerCase()){
@@ -33,8 +36,7 @@ rounter.post('/usuarios', async (req, res)=>{
                     mensagem: "Usuário cadastrado com sucesso!!!",
                     recepted_data
                 });
-                
-            })
+            })    
         })
     })
     .catch(()=>{

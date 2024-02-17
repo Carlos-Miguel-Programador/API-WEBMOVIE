@@ -1,7 +1,6 @@
 const express = require('express');
 
 //IMPORTANDO O SCRIPT QUE RETORNA QUANTOS USUÁRIOS TEM NO BANCO DE DADOS
-const n_users = require('../db/counter');
 
 const router = express.Router();
 
